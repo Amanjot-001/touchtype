@@ -45,18 +45,15 @@
     border: 1px solid #ccc;
     width: 100%;
   }
-  
-  /* Result */
-  .res {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  .highlight {
-    opacity: 1;
-  }
   .given-text {
     opacity: 0.5;
   }
-  
+  .right {
+    opacity: 1;
+    color: green;
+    font-size: 2rem;
+  }
+
+  .wrong {
+    color: red;
+  }

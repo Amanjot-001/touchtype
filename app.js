@@ -3,30 +3,32 @@ const input = document.querySelector('#myInput')
 const res = document.querySelector('.res')
 
 const originalString = str.textContent
+makeHtml(originalString)
 
 input.addEventListener('keydown',(e) => {
     const ptr = input.value
+    if(ptr.length===0) return
     if(e.key==='Backspace'){
-        console.log(ptr)
-        const string = str.textContent;
-        const chars = string.split('')
-        chars[ptr.length-1]=originalString[ptr.length-1]
-        str.textContent = chars.join('');
+        const index = document.querySelector(`p.given-text span.span${ptr.length-1}`)
+        index.classList.remove('right')
+        index.classList.remove('wrong')
+        index.innerText=originalString[ptr.length-1]
     }
 })
 
 input.addEventListener('input', () => {
+    
     const p = input.value;
-    const s = str.textContent;
-    if(s[p.length]===p[p.length-1]){
-        const chars = s.split('')
-        chars[p.length-1]=p[p.length-1];
-        str.textContent = chars.join('');
+    if(p.length===0) return
+    if(originalString[p.length-1]===p[p.length-1]){
+        const index = document.querySelector(`p.given-text span.span${p.length-1}`)
+        index.classList.add('right')
+
     }
     else{
-        const chars = s.split('')
-        chars[p.length-1]=p[p.length-1];
-        str.textContent = chars.join('')
+        const index = document.querySelector(`p.given-text span.span${p.length-1}`)
+        index.classList.add('wrong')
+        index.innerText=p[p.length-1]
     }
 })
 
@@ -35,4 +37,15 @@ function print(){
     message.innerText = 'correct'
     message.classList.add('.mess');
     res.appendChild(message);
+}
+
+function makeHtml(originalString){
+    str.innerHTML=''
+    for(let i=0; i<originalString.length; i++){
+        const span = document.createElement('span')
+        span.textContent = originalString[i];
+        span.classList.add(`span${i}`)
+        str.insertAdjacentElement('beforeend',span)
+    }
+    console.log(str)
 }

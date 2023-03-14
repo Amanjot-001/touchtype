@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typeee</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    .pointer {
+        position: absolute;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent black transparent;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -19,7 +30,7 @@
             </li>
         </ul>
     </nav>
-    <p class="given-text">Hello World</p>
+    <p class="given-text" contenteditable="ture">Hello World</p>
     <form class="input-form">
         <input type="text" id="myInput" placeholder="hehe">
     </form>

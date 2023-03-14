@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Site with Text Cursor</title>
+    <style>
+        .given-text {
+            font-size: 24px;
+            line-height: 1.5;
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 0 20px;
+            text-align: justify;
+        }
+
+        #input {
+            margin: 0 auto;
+            width: 100px;
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 24px;
+            background-color: black;
+            animation: blink 0.5s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="given-text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at imperdiet mi. In vitae varius est, non tempor massa. Nullam malesuada lectus purus, ut lacinia dolor venenatis at. Integer rutrum justo eget risus hendrerit, ac faucibus sapien scelerisque. Integer fringilla, risus quis auctor pharetra, justo libero tincidunt est, id vehicula turpis orci in justo. Pellentesque dignissim laoreet risus, auctor congue lorem suscipit id. Nam ac fermentum justo. Etiam cursus faucibus ipsum, nec euismod velit auctor vel. Integer bibendum quam ut sapien congue, nec dictum risus pulvinar. Ut interdum quam a tincidunt tincidunt. Duis laoreet risus vel nulla tincidunt blandit.</p>
+    </div>
+    <input id="input" type="number" min="0" max="294" placeholder="Enter position">
+    <script>
+        const p = document.querySelector('.given-text p');
+        const originalString = p.textContent;
+        const input = document.querySelector('#input');
+        input.focus();
+
+        const cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        p.appendChild(cursor);
+
+        input.addEventListener('input', () => {
+            const position = input.value;
+            setCursorPosition(position);
+        });
+
+        function setCursorPosition(position) {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.setStart(p.childNodes[0], position);
+            range.collapse(true);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            p.focus();
+
+            const cursorOffset = range.getBoundingClientRect().width + 2;
+            cursor.style.marginLeft = `${cursorOffset}px`;
+        }
+    </script>
+</body>
+</html>
