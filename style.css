@@ -75,3 +75,27 @@ button:hover {
   text-align: center;
   margin-top: 20px;
 }
+
+/* style the result message */
+.res {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.wpm {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* center the clock and timer dropdown */
+.clock, .timerDropdown {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* add some margin to the timer dropdown */
+.timerDropdown {
+  margin-top: 20px;
+}
