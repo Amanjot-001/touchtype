@@ -1,17 +1,56 @@
-const str = document.querySelector('.given-text')
-const input = document.querySelector('#myInput')
-const res = document.querySelector('.wpm')
+const str = document.querySelector('.given-text');
+const input = document.querySelector('#myInput');
+const dropdown = document.querySelector('.timerDropdown');
+const res = document.querySelector('.wpm');
 const clock = document.querySelector('.clock');
-const inputLength = input.value;
-let over = false;
-let flag = 0
-const originalString = str.textContent;
-const arr = new Array(originalString.length).fill(0);
+
+const originalString = str.textContent.replace(/\s+/g, ' ').trim(); // trimming all extra spaces from beg, end & b/w.
+const visited = new Array(originalString.length).fill(0);
+
+let over = false; // to stop timer if user finished typing
+let startTimer = false; // to start timer when user started typing
 let correctWords = 0;
+let grossWords = 0;
 
-makeHtml(originalString)
+//creating span in each char of given text
+makeHtml(originalString);
+function makeHtml(originalString){
+    str.innerHTML=''
+    for(let i=0; i<originalString.length; i++){
+        const span = document.createElement('span')
+        span.textContent = originalString[i];
+        span.classList.add(`span${i}`)
+        str.insertAdjacentElement('beforeend',span)
+    }
+}
 
-let count = 60;
+//counting total words present in given text
+const totalWords = tWords();
+function tWords (){
+    let words = 0;
+    let char_flag = false;
+    let space_flag = false;
+    for(let ch of originalString){
+        if(ch === ' ')
+            space_flag = true;
+        else
+            char_flag = true;
+        
+        if(char_flag === true && space_flag === true){
+            words++;
+            char_flag = false;
+            space_flag = false;
+        } 
+    }
+    return words+1;
+}
+console.log(totalWords)
+
+// selecting timer start value
+let count = parseInt(dropdown.value);
+dropdown.addEventListener('change', ()=> {
+    count = parseInt(dropdown.value);
+})
 
 function timer() {
   if (count === 0 || over === true) {
@@ -25,11 +64,15 @@ function timer() {
   }
 }
 
+function score(){
+    res.textContent = (correctWords/originalString.length)*100;
+}
+
 input.addEventListener('keydown',(e) => {
-    const ptr = input.value
-    if(ptr.length===0) return
+    const ptr = input.value;
+    if(ptr.length===0) return;
     if(e.key==='Backspace'){
-        const index = document.querySelector(`p.given-text span.span${ptr.length-1}`)
+        const index = document.querySelector(`p.given-text span.span${ptr.length-1}`);
         index.classList.remove('right')
         index.classList.remove('wrong')
         index.innerText=originalString[ptr.length-1]
@@ -38,14 +81,16 @@ input.addEventListener('keydown',(e) => {
 
 input.addEventListener('input', () => {
     const p = input.value;
-    flag++;
-    if(flag ===1) setTimeout(timer, 1000)
-
-    const index = document.querySelector(`p.given-text span.span${p.length-1}`)
+    if(!startTimer){
+        setTimeout(timer, 1000);
+        startTimer = true;
+    }
+    const index = document.querySelector(`p.given-text span.span${p.length-1}`);
 
     if(originalString[p.length-1]===p[p.length-1]){
-        index.classList.add('right')
-        if(arr[p.length-1]===0) correctWords++;
+        if(p.length !== 0)
+            index.classList.add('right');
+        if(visited[p.length-1]===0) correctWords++;
     }
     else{
         index.classList.add('wrong')
@@ -55,21 +100,8 @@ input.addEventListener('input', () => {
     if(p === originalString || count===0){
         input.disabled = true;
         over = true;
+        score();
         return;
     }
-    arr[p.length-1]=1;
+    visited[p.length-1]=1;
 })
-
-function makeHtml(originalString){
-    str.innerHTML=''
-    for(let i=0; i<originalString.length; i++){
-        const span = document.createElement('span')
-        span.textContent = originalString[i];
-        span.classList.add(`span${i}`)
-        str.insertAdjacentElement('beforeend',span)
-    }
-}
-
-function score(){
-    res.textContent = (correctWords/originalString.length)*100;
-}
