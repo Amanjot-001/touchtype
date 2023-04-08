@@ -55,6 +55,10 @@ button:hover {
   color: red;
 }
 
+.given-text span.notTyped {
+  color: blue;
+}
+
 /* Style the input form */
 .input-form {
   display: flex;
@@ -89,7 +93,8 @@ button:hover {
 }
 
 /* center the clock and timer dropdown */
-.clock, .timerDropdown {
+.clock,
+.timerDropdown {
   display: block;
   margin: 0 auto;
   text-align: center;

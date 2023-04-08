@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,21 @@
     <title>Typeee</title>
     <link rel="stylesheet" href="style.css">
     <style>
-    .pointer {
-        position: absolute;
-        border-width: 10px;
-        border-style: solid;
-        border-color: transparent transparent black transparent;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+        .pointer {
+            position: absolute;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
-        <img src="https://i.ibb.co/ScQ1xm7/rebel.png"  alt="logo" class="logo"/>
+        <img src="https://i.ibb.co/ScQ1xm7/rebel.png" alt="logo" class="logo" />
         <ul class="nav-list">
             <li class="list-item">
                 <button>Notes</button>
@@ -33,10 +35,14 @@
     <select class="timerDropdown">
         <option value="30">30</option>
         <option value="60" selected>60</option>
+        <option value="90">90</option>
         <option value="120">120</option>
-      </select>
+        <option value="150">150</option>
+    </select>
     <p class="clock"></p>
-    <p class="given-text" contenteditable="ture">Hello World</p>
+    <p class="given-text" contenteditable="ture">In computer science, a stack is an abstract data type that represents a
+        collection of elements, where the elements are inserted and removed based on a last-in-first-out (LIFO)
+        principle. This means that the most recently added element is the first one to be removed.</p>
     <form class="input-form">
         <input type="text" id="myInput" placeholder="hehe">
     </form>
@@ -45,4 +51,5 @@
     </div>
     <Script src="app.js"></Script>
 </body>
+
 </html>
