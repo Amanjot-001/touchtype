@@ -12,6 +12,16 @@ let startTimer = false; // to start timer when user started typing
 let correctWords = 0;
 let grossWords = 0;
 
+// when click on text, user can start typing
+str.addEventListener('click', () => {
+    input.focus();   
+})
+// input.style.opacity = 0;
+// input.style.height = '0';
+// input.style.width = '0';
+// input.style.border = '0';
+// input.style.padding = '0';
+
 //creating span in each char of given text
 makeHtml(originalString);
 function makeHtml(originalString) {
@@ -109,6 +119,11 @@ input.addEventListener('input', (e) => {
         input.value = input.value.slice(0, -1)
         return;
     }
+    if(originalString[p.length-1] == ' ' && p[p.length-1] != ' '){ // we can't type extra chars in a word than present in original
+        input.value = input.value.slice(0,-1);
+        return;
+    }
+
     if (!startTimer) {
         setTimeout(timer, 1000);
         startTimer = true;
@@ -137,7 +152,7 @@ input.addEventListener('input', (e) => {
             return;
         }
         index.classList.add('wrong')
-        index.innerText = p[p.length - 1]
+        // index.innerText = p[p.length - 1]
     }
 
     if (p === originalString || count === 0) {

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typeee</title>
     <link rel="stylesheet" href="style.css">
-    <style>
+    <!-- <style>
         .pointer {
             position: absolute;
             border-width: 10px;
@@ -17,11 +17,11 @@
             left: 50%;
             transform: translateX(-50%);
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <img src="https://i.ibb.co/ScQ1xm7/rebel.png" alt="logo" class="logo" />
         <ul class="nav-list">
             <li class="list-item">
@@ -31,7 +31,7 @@
                 <button>Saved</button>
             </li>
         </ul>
-    </nav>
+    </nav> -->
     <select class="timerDropdown">
         <option value="30">30</option>
         <option value="60" selected>60</option>
@@ -40,12 +40,35 @@
         <option value="150">150</option>
     </select>
     <p class="clock"></p>
-    <p class="given-text" contenteditable="ture">In computer science, a stack is an abstract data type that represents a
-        collection of elements, where the elements are inserted and removed based on a last-in-first-out (LIFO)
-        principle. This means that the most recently added element is the first one to be removed.</p>
-    <form class="input-form">
-        <input type="text" id="myInput" placeholder="hehe">
-    </form>
+    <div class="container">
+        <p class="given-text" contenteditable="ture">In computer science, a stack is an abstract data type that represents a
+            collection of elements, with two main operations: push, which adds an element to the top of the stack, and pop,
+            which removes the top element from the stack.
+    
+            A stack is a Last-In-First-Out (LIFO) data structure, which means that the last element added to the stack is
+            the first one to be removed. In other words, elements are pushed onto the top of the stack and popped off the
+            top of the stack in the reverse order in which they were added.
+    
+            The basic concept of a stack is used in many programming applications, such as handling function calls and
+            managing program memory. A stack is often used to store information about function calls, including parameters,
+            return addresses, and local variables. When a function is called, the information is pushed onto the stack, and
+            when the function returns, the information is popped off the stack.
+    
+            A stack is also used in programming languages to handle expressions and operator precedence. When an expression
+            is evaluated, its components (operands and operators) are pushed onto the stack in the order in which they are
+            encountered. When an operator is encountered, the operands are popped from the stack and the result is pushed
+            back onto the stack.
+    
+            In computer memory, a stack is typically implemented using a contiguous block of memory, with a pointer pointing
+            to the top of the stack. The push and pop operations manipulate this pointer to add and remove elements from the
+            stack.
+    
+            Overall, a stack is a simple and powerful data structure that is widely used in computer science and
+            programming. Its simplicity and efficiency make it a valuable tool for many applications.</p>
+        <!-- <form class="input-form"> -->
+            <textarea type="text" id="myInput" autocomplete="off"></textarea>
+        <!-- </form> -->
+    </div>
     <div class="res">
         <p class="wpm"></p>
     </div>
