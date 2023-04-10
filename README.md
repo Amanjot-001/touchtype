@@ -1,4 +1,3 @@
 # touchtype
-## todo
 score, 
 cursor
