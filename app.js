@@ -83,6 +83,10 @@ function score() {
 
 //backspace stuff
 input.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Backspace') {
+        e.preventDefault(); // Prevent the default behavior of the key combination
+        return;
+      }
     let ptr = input.value;
     let flag = false; // to check if removing notTyped class
     if (ptr.length < 1) return; //if no character is left
@@ -108,16 +112,15 @@ input.addEventListener('keydown', (e) => {
         }
     }
 })
-
 //handling the input
 input.addEventListener('input', (e) => {
     let p = input.value;
-    console.log(p);
     if (p.length < 1) {
         let index = document.querySelector(`p.given-text span.span${0}`);
         index.innerText = `|${originalString[0]}`;
         return;
     }
+
     let index = document.querySelector(`p.given-text span.span${p.length - 1}`);
 
     if (p[0] == ' ') { // to prevent typing space in start
@@ -177,7 +180,6 @@ input.addEventListener('input', (e) => {
             return;
         }
         if (originalString[p.length - 1] == ' ' && p[p.length - 1] != ' ') {
-            console.log(input.value);
             input.value = input.value.slice(0, -1);
             return;
         }
@@ -194,7 +196,7 @@ input.addEventListener('input', (e) => {
         // index.innerText = p[p.length - 1]
     }
 
-    if (p === originalString || count === 0) {
+    if (p.length === originalString.length || count === 0) {
         input.disabled = true;
         over = true;
         score();
