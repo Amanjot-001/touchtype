@@ -10,9 +10,13 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="main.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Raleway:ital@1&family=Roboto+Slab:wght@300&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -20,7 +24,8 @@
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="#">
-                    <img src="/images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="/images/logo.png" alt="Logo pirates" width="35" height="30"
+                        class="d-inline-block align-text-top">
                     Keyboard Pirates
                 </a>
                 <button class="navbar-toggler border-white bg-transparent" type="button" data-bs-toggle="collapse"
@@ -34,6 +39,12 @@
                             <a class="nav-link text-white" aria-current="page" href="">Notes</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-white" aria-current="page" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" aria-current="page" href="#footer">Contact</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-white" href="">Sign In</a>
                         </li>
                         <li class="nav-item">
@@ -45,20 +56,20 @@
         </nav>
     </div>
 
-    
-    <div class="info">
+    <!-- hero -->
+    <div id="info">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 bg-image">
-                    <img class="sea img-fluid" src="images/2308.jpg" alt="">
-                    <img class="boat img-fluid" src="images/boat.png" alt="">
+                    <img class="sea img-fluid" src="images/2308.jpg" alt="night sea">
+                    <img class="boat img-fluid" src="images/boat.png" alt="boat">
                     <div class="content text-center text-lg-start text-wrap">
                         <h3 class="info-text mt-5 mb-3">
                             <p class="text-white">This is a typing site.</p>
                             <p class="text-white">You can also type notes.</p>
                             <p class="text-white">Start today.</p>
                         </h3>
-                        <a href="#" class="main-btn btn btn-outline-light">Get Started</a>
+                        <a href="#" class="main-btn btn btn-lg btn-outline-light">Get Started</a>
                     </div>
                 </div>
                 <div class="col-lg-6"></div>
@@ -67,16 +78,16 @@
     </div>
 
 
-    <div class="leaderboard bg-image">
-        <img class="undersea img-fluid" src="images/undersea.jpg" alt="">
-        <div class="card mx-auto border-0 text-white" style="width: 700px;">
-            <div class="card-header border-0 m-1 d-flex justify-content-center h2">
-                &#128081 Leaderboard
+    <div class="bg-image" id="leaderboard">
+        <img class="undersea img-fluid" src="images/undersea.png" alt="underwater">
+        <div class="card mx-auto border-0 text-white mt-2" style="width: 700px;">
+            <div class="card-header border-0 m-1 d-flex justify-content-center h1">
+                &#128081 Leaderboard &#128081
             </div>
             <div class="card-body d-flex justify-content-between">
-                <h4 class="card-text col-2 text-center">Position</h4>
-                <h4 class="card-text col-7 text-center">Name</h4>
-                <h4 class="card-text col-3 text-center">Score(wpm)</h4>
+                <h3 class="card-text col-2 text-center">Position</h3>
+                <h3 class="card-text col-7 text-center">Name</h3>
+                <h3 class="card-text col-3 text-center">Score(wpm)</h3>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item border-0 p-0 d-flex justify-content-center">
@@ -130,78 +141,115 @@
                     <p class="col-3 text-center">100</p>
                 </li>
             </ul>
-            <div class="card-footer m-1 border-0 p-0 d-flex justify-content-center">
-                <h5 class="col-2 text-center">#548</h5>
-                <h5 class="col-7 text-center">Yash</h5>
-                <h5 class="col-3 text-center">40</h5>
+            <div class="card-footer m-1 p-0 d-flex justify-content-center">
+                <h4 class="col-2 text-center">#548</h4>
+                <h4 class="col-7 text-center">Yash</h4>
+                <h4 class="col-3 text-center">40</h4>
             </div>
         </div>
     </div>
 
+    <div id="last">
+        <!-- <div class="d-flex justify-content-end" id="fishes-wrapper">
+            <div class="fishes">
+                <img class="fish img-fluid mx-1" src="/images/fish.png" alt="fish">
+                <img class="fish img-fluid mx-1" src="/images/fish.png" alt="fish">
+                <img class="fish img-fluid mx-1" src="/images/fish.png" alt="fish">
+                <img class="fish img-fluid mx-1" src="/images/fish.png" alt="fish">
+                <img class="fish img-fluid mx-1" src="/images/fish.png" alt="fish">
+            </div>
+        </div> -->
 
-    <div class="about container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Feature 1</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempor diam
-                            ac nisi tincidunt, in imperdiet lorem volutpat. Mauris tincidunt nulla vel eros pharetra, a
-                            posuere velit convallis. Aliquam venenatis elit id ex venenatis, nec pharetra nisi luctus.
-                            Vivamus sed purus nec magna convallis placerat.</p>
+        <!-- Features -->
+        <div class="container" id="about">
+            <h1 class="d-flex justify-content-center text-white my-3">Key Features</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-4 h-100 shaking-card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-center fs-4">Touch Typing</h5>
+                            <p class="card-text my-4 mx-4">You can practice your typing speed and enhance your abilities.<br>
+                                Whether you're a beginner or an experienced typist, our site provides a variety of materials to suit your needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 h-100 shaking-card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-center fs-4">Learn syllabus by typing</h5>
+                            <p class="card-text my-4 mx-4">Our site offers a unique approach to learning, instead of 
+                                just reading you can actively engage with the material by typing. <br>
+                                This improves your typing speed and accuracy in the process.<br>
+                                With our platform, learning college syllabus has never been more interactive or effective.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 h-100 shaking-card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-center fs-4">Customizable typing text</h5>
+                            <p class="card-text my-4 mx-4">You can select from a variety of pre-given notes to type out,
+                                or you can choose any section of the notes and start typing.<br>
+                                With our customizable note typing practice feature, you can take control of your
+                                learning and achieve better results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 h-100 shaking-card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-center fs-4">Keep track with others</h5>
+                            <p class="card-text my-4 mx-4">With our platform, you can see how you stack up against your
+                                classmates in terms of typing speed and accuracy.<br>
+                                Our ranking system allows you to track your progress and see where you stand relative to your peers.
+                                This can be a great motivator to improve your typing skills and outperform your classmates.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Feature 2</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempor diam
-                            ac nisi tincidunt, in imperdiet lorem volutpat. Mauris tincidunt nulla vel eros pharetra, a
-                            posuere velit convallis. Aliquam venenatis elit id ex venenatis, nec pharetra nisi luctus.
-                            Vivamus sed purus nec magna convallis placerat.</p>
+        </div>
+
+
+        <div class="text-light m-0" id="footer">
+            <div class="container">
+                <div class="row mb-4">
+                    <h3 class="d-flex justify-content-center mb-5">Team</h3>
+                    <div class="col-md-6">
+                        <div class="row px-5">
+                            <div class="col-md-2">
+                                <img class="profile-photo" src="images/avatar.jpg" alt="Profile photo">
+                            </div>
+                            <div class="col-md-10">
+                                <p class="name text-center d-flex justify-content-start mb-2">Amanjot Singh</p>
+                                <p class="mail text-center d-flex justify-content-start">Email: aman@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row px-5">
+                            <div class="col-md-2">
+                                <img class="profile-photo" src="images/avatar.jpg" alt="Profile photo">
+                            </div>
+                            <div class="col-md-10">
+                                <p class="name text-center d-flex justify-content-start mb-2">Yash Poonia</p>
+                                <p class="mail text-center d-flex justify-content-start">Email: yash@example.com</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Feature 3</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempor diam
-                            ac nisi tincidunt, in imperdiet lorem volutpat. Mauris tincidunt nulla vel eros pharetra, a
-                            posuere velit convallis. Aliquam venenatis elit id ex venenatis, nec pharetra nisi luctus.
-                            Vivamus sed purus nec magna convallis placerat.</p>
+                <div class="row mt-3">
+                    <div class="col-md-12 text-center">
+                        <p>&copy; 2023 Keyboard Pirates. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <footer class="bg-dark text-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>About Us</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla mauris id mi consequat
-                        consequat. Donec feugiat velit vel nulla ultrices.</p>
-                </div>
-                <div class="col-md-6">
-                    <h4>Contact Us</h4>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-map-marker"></i> 123 Main Street, Anytown USA</li>
-                        <li><i class="fa fa-phone"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope"></i> info@yourwebsite.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>&copy; 2023 YourWebsite.com. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
