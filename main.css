@@ -57,6 +57,13 @@ body {
     top: 550px;
 }
 
+.bubbles {
+    position: absolute;
+    height: 55px;
+    right: 130px;
+    top: 760px;
+}
+
 /* header / navbar*/
 
 .navbar {
@@ -154,8 +161,6 @@ body {
     padding-top: 8px;
 }
 
-/* rgba(21, 97, 210, 0.5) */
-
 #about .card {
     background-color: transparent;
     border: none;
@@ -227,7 +232,8 @@ body {
     border-radius: 50%;
 }
 
-.name, .mail {
+.name,
+.mail {
     font-size: 1.15rem;
     color: rgb(246, 153, 116);
 }
