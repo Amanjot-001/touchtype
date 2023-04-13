@@ -1,23 +1,14 @@
 const str = document.querySelector('.given-text');
 const input = document.querySelector('#myInput');
-const dropdown = document.querySelector('.timerDropdown');
-const res = document.querySelector('.wpm');
-const clock = document.querySelector('.clock');
 
-const originalString = str.textContent.replace(/\s+/g, ' ').trim(); // trimming all extra spaces from beg, end & b/w.
-const visited = new Array(originalString.length).fill(0);
+const originalString = str.textContent.replace(/\s+/g, ' ').trim();
 
-let over = false; // to stop timer if user finished typing
-let startTimer = false; // to start timer when user started typing
-let correctWords = 0;
-let grossWords = 0;
-
-//creating span in each char of given text
 makeHtml(originalString);
 function makeHtml(originalString) {
     str.innerHTML = ''
     const span = document.createElement('span')
-    span.textContent = `|${originalString[0]}`;
+    span.textContent = `${originalString[0]}`;
+    span.style.borderLeft = "2px solid #FF8400";
     span.classList.add(`span${0}`)
     str.insertAdjacentElement('beforeend', span)
     for (let i = 1; i < originalString.length; i++) {
@@ -27,8 +18,10 @@ function makeHtml(originalString) {
         str.insertAdjacentElement('beforeend', span)
     }
 }
+window.addEventListener('load', () => {
+    input.focus();
+})
 
-// hiding the input field
 str.addEventListener('click', () => {
     input.focus();
 });
@@ -38,62 +31,25 @@ input.style.width = '0';
 input.style.border = '0';
 input.style.padding = '0';
 
-//counting total words present in given text
-const totalWords = tWords();
-function tWords() {
-    let words = 0;
-    let char_flag = false;
-    let space_flag = false;
-    for (let ch of originalString) {
-        if (ch === ' ')
-            space_flag = true;
-        else
-            char_flag = true;
 
-        if (char_flag === true && space_flag === true) {
-            words++;
-            char_flag = false;
-            space_flag = false;
-        }
-    }
-    return words + 1;
-}
-
-// selecting timer start value
-let count = parseInt(dropdown.value);
-dropdown.addEventListener('change', () => {
-    count = parseInt(dropdown.value);
-})
-
-function timer() {
-    if (count === 0 || over === true) {
-        clock.textContent = count;
-        input.disabled = true;
-        score();
-    } else {
-        clock.textContent = count;
-        count--;
-        setTimeout(timer, 1000);
-    }
-}
-
-function score() {
-    res.textContent = (correctWords / originalString.length) * 100;
-}
-
-//backspace stuff
 input.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.key === 'Backspace') {
         e.preventDefault(); // Prevent the default behavior of the key combination
         return;
-      }
+    }
     let ptr = input.value;
     let flag = false; // to check if removing notTyped class
+    let once = true;
     if (ptr.length < 1) return; //if no character is left
     if (e.key === 'Backspace') {
         let index = document.querySelector(`p.given-text span.span${ptr.length - 1}`);
         // remove notTyped class from all chars till the place where space was entered
         while (index.classList.contains('notTyped')) {
+            if (once) {
+                index.style.borderRight = 'none';
+                index.style.paddingRight = 2 + 'px';
+            }
+            once = false;
             index.classList.remove('notTyped')
             index.innerText = originalString[ptr.length - 1]
             ptr = ptr.slice(0, -1);
@@ -103,21 +59,25 @@ input.addEventListener('keydown', (e) => {
         if (flag) { // only if above loop ran
             // index = document.querySelector(`p.given-text span.span${ptr.length-1}`);
             input.value = ptr;
-            input.value += originalString[ptr.length - 1]
+            input.value += originalString[ptr.length - 1];
         }
         else { // remove classes
+            index.style.borderRight = 'none';
+            index.style.paddingRight = 2 + 'px';
             index.classList.remove('right')
             index.classList.remove('wrong')
             index.innerText = originalString[ptr.length - 1]
         }
     }
 })
+
 //handling the input
 input.addEventListener('input', (e) => {
     let p = input.value;
     if (p.length < 1) {
         let index = document.querySelector(`p.given-text span.span${0}`);
-        index.innerText = `|${originalString[0]}`;
+        index.innerText = `${originalString[0]}`;
+        index.style.borderLeft = "2px solid #FF8400";
         return;
     }
 
@@ -133,28 +93,32 @@ input.addEventListener('input', (e) => {
         return;
     }
 
-    if (!startTimer) {
-        setTimeout(timer, 1000);
-        startTimer = true;
-    }
-
     // if correct word is typed
     if (originalString[p.length - 1] === p[p.length - 1]) {
         if (p.length !== 0) {
             if (p.length > 1) {
                 let beforeSpan = document.querySelector(`p.given-text span.span${p.length - 2}`);
-                index.textContent = `${index.textContent}|`;
-                beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
+                // index.textContent = `${index.textContent}`;
+                index.style.borderRight = "2px solid #FF8400";
+                index.style.paddingRight = 0 + 'px';
+                // beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
+                beforeSpan.style.border = 'none';
+                beforeSpan.style.paddingRight = 2 + 'px';
             }
             else {
-                if (index.textContent.length > 1) index.textContent = `${index.textContent[1]}|`;
-                else {
-                    index.textContent = `${index.textContent[0]}|`;
+                // if (index.textContent.length > 1) index.textContent = `${index.textContent[1]}|`;
+                // else {
+                //     index.textContent = `${index.textContent[0]}|`;
+                // }
+                if (p.length == 1) {
+                    index.style.borderLeft = 'none';
+                    index.style.paddingRight = 2 + 'px';
                 }
+                index.style.borderRight = '2px solid #FF8400';
+                index.style.paddingRight = 0 + 'px';
             }
             index.classList.add('right');
         }
-        if (visited[p.length - 1] === 0) correctWords++;
     }
     else {
         // if space is typed b/w word
@@ -166,7 +130,9 @@ input.addEventListener('input', (e) => {
                 if (originalString[p.length - 1] == ' ') break;
                 if (oneTime) {
                     let beforeSpan = document.querySelector(`p.given-text span.span${p.length - 2}`);
-                    beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
+                    // beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
+                    beforeSpan.style.borderRight = 'none';
+                    beforeSpan.style.paddingRight = 2 + 'px';
                 }
                 oneTime = false;
                 index.classList.add('notTyped');
@@ -174,7 +140,9 @@ input.addEventListener('input', (e) => {
                 input.value += originalString[i];
                 index = document.querySelector(`p.given-text span.span${p.length - 1}`);
             }
-            index.textContent = `${index.textContent}|`
+            // index.textContent = `${index.textContent}|`
+            index.style.borderRight = '2px solid #FF8400';
+            index.style.paddingRight = 0 + 'px';
             input.value += " ";
             index.classList.add('notTyped');
             return;
@@ -185,22 +153,31 @@ input.addEventListener('input', (e) => {
         }
         if (p.length > 1) {
             let beforeSpan = document.querySelector(`p.given-text span.span${p.length - 2}`);
-            index.textContent = `${index.textContent}|`;
-            beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
+            // index.textContent = `${index.textContent}`;
+            index.style.borderRight = "2px solid #FF8400";
+            index.style.paddingRight = 0 + 'px';
+            // beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
+            beforeSpan.style.border = 'none';
+            beforeSpan.style.paddingRight = 2 + 'px';
         }
         else {
-            if (index.textContent.length > 1) index.textContent = `${index.textContent[1]}|`;
-            else index.textContent = `${index.textContent[0]}|`;
+            // if (index.textContent.length > 1) index.textContent = `${index.textContent[1]}|`;
+            // else index.textContent = `${index.textContent[0]}|`;
+            if (p.length == 1) {
+                index.style.borderLeft = 'none';
+                index.style.paddingRight = 2 + 'px';
+            }
+            index.style.borderRight = "2px solid #FF8400";
+            index.style.paddingRight = 0 + 'px';
         }
         index.classList.add('wrong');
         // index.innerText = p[p.length - 1]
     }
 
-    if (p.length === originalString.length || count === 0) {
+    if (p.length === originalString.length) {
         input.disabled = true;
         over = true;
         score();
         return;
     }
-    visited[p.length - 1] = 1;
 })
