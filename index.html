@@ -6,8 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@500&display=swap"
+        rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,7 +23,7 @@
         <div class="vertical-box">
             <div class="logo-profile">
                 <div class="logo">
-                    <a href="/index.html" class="logo-text">Keyboard Pirates</a>
+                    <a href="/index.html" class="logo-text">Semicolon</a>
                 </div>
                 <div class="profile">
                     <a href="#">
@@ -51,7 +58,7 @@
                     <a href="">
                         <div class="card-body">
                             <h5 class="card-title">Practice Notes</h5>
-                            <p class="card-text"> Click here to access a collection of practice notes for typing
+                            <p class="card-text"> <i>Click here</i> to access a collection of notes for typing
                                 practice.</p>
                         </div>
                     </a>
@@ -61,7 +68,8 @@
                     <a href="">
                         <div class="card-body">
                             <h5 class="card-title">Random Text</h5>
-                            <p class="card-text"> Click here to generate a random set of text for typing practice.</p>
+                            <p class="card-text"> <i>Click here</i> to generate a random set of text for typing
+                                practice.</p>
                         </div>
                     </a>
                 </div>
@@ -70,22 +78,10 @@
                     <a href="">
                         <div class="card-body">
                             <h5 class="card-title">Input Your Own Text</h5>
-                            <p class="card-text">Click here to input your own text for a personalized typing practice
-                                session.</p>
+                            <p class="card-text"> <i>Click here</i> to input your own text for a personalized typing
+                                practice session.</p>
                         </div>
                     </a>
-                </div>
-            </div>
-
-            <!-- HTML code for showing a score -->
-            <div class="score-box">
-                <div class="score">
-                    <span class="score-label">Score:</span>
-                    <span class="score-value">80</span>
-                </div>
-                <div class="best-score">
-                    <span class="score-label">Best Score:</span>
-                    <span class="score-value">100</span>
                 </div>
             </div>
 
@@ -94,31 +90,27 @@
             <div class="container">
                 <input type="text" id="myInput" autocomplete="off">
                 <p class="given-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa. Aut pariatur mollitia
-                    cum debitis qui! Beatae magnam, dolorem saepe tenetur accusantium veritatis quia mollitia quae
-                    molestiae earum voluptate debitis!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, minus libero? Unde voluptatem in nihil
-                    aspernatur eaque facere, vitae ad accusamus officiis cupiditate, a tenetur ipsam impedit obcaecati
-                    sequi iure!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, maxime quasi ipsa repellat magni,
-                    architecto sapiente earum dolorum quae vero expedita nam non quas voluptatibus quo nesciunt alias
-                    suscipit velit!
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, aliquam veniam hic delectus
-                    eligendi esse blanditiis accusantium praesentium, ab rerum deleniti. Consectetur voluptates
-                    similique cum velit ea nam non dolorem?
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto reiciendis autem libero nulla
-                    recusandae corrupti? Consequatur ex corrupti eligendi architecto, ratione dignissimos doloribus
-                    laboriosam aliquid ducimus dolores a perferendis quia!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima tempora quia, omnis velit
-                    laudantium ab id odio tenetur non, rem molestias sequi quis laboriosam minus, quidem tempore maxime
-                    esse illum!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus totam obcaecati maiores veritatis
-                    labore cumque velit cum iure odit sit, est cupiditate consequuntur blanditiis a ad ab hic amet
-                    expedita.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at assumenda dicta rem fugiat ratione
-                    repellendus. Optio facilis temporibus quos ex tenetur. Soluta in accusamus minus? Officiis
-                    architecto dignissimos delectus.
+                    A linked list is a data structure in which the objects are arranged in a linear order.
+                    Unlike an array, however, in which the linear order is determined by the array
+                    indices, the order in a linked list is determined by a pointer in each object. Linked
+                    lists provide a simple, flexible representation for dynamic sets, supporting (though
+                    not necessarily efficiently) all the operations listed on page 230.
+                    As shown in Figure 10.3, each element of a doubly linked list L is an object with
+                    an attribute key and two other pointer attributes: next and pre. The object may
+                    also contain other satellite data. Given an element x in the list, x:next points to its
+                    successor in the linked list, and x:pre points to its predecessor. If x:pre D NIL,
+                    the element x has no predecessor and is therefore the first element, or head, of
+                    the list. If x:next D NIL, the element x has no successor and is therefore the last
+                    element, or tail, of the list. An attribute L:head points to the first element of the
+                    list. If L:head D NIL, the list is empty.
 
+                    Arrays also allow us to perform operations on multiple elements of the array at once. For example,
+                    we can loop through an array and perform a calculation on each element, such as adding or
+                    subtracting a constant value.
+
+                    In conclusion, arrays are a simple and powerful data structure that allow us to store and manipulate
+                    collections of data efficiently. By using arrays, we can access and operate on elements of the array
+                    quickly and easily, making programming tasks much more efficient and effective.
                 </p>
             </div>
         </div>

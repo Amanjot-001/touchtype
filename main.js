@@ -6,6 +6,31 @@ const sKey = document.querySelector('.s-key');
 const dKey = document.querySelector('.d-key');
 const bubbles = document.querySelector('.bubbles');
 
+
+//for typewriter effect
+const infoText = document.querySelector('.info-text');
+const text = infoText.innerText;
+infoText.innerHTML='';
+for( let i=0; i<text.length; i++){
+    const span = document.createElement('span');
+    span.textContent = text[i];
+    span.classList.add('opac');
+    infoText.insertAdjacentElement('beforeend', span);
+}
+const spans = document.querySelectorAll('.info-text span');
+let index = 0;
+
+function revealText() {
+    if (index >= spans.length) return;
+    spans[index].classList.remove('opac');
+    index++;
+    setTimeout(revealText, 295);
+}
+
+setTimeout(() => {
+    revealText();
+  }, 2000);
+
 // to hide when scrolling is not done
 dKey.classList.add('hide');
 sKey.classList.add('hide');

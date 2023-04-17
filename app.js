@@ -1,14 +1,23 @@
 const str = document.querySelector('.given-text');
 const input = document.querySelector('#myInput');
+const timerSet = document.querySelectorAll('li');
+const watch = document.querySelector('.timer');
+const time = document.querySelector('.bi-clock');
 
 const originalString = str.textContent.replace(/\s+/g, ' ').trim();
+
+let clock = 0;
+let clockFlag = false;
+let a = 0;
+let gotInput = false;
+const stopWatch = document.createElement('div');
 
 makeHtml(originalString);
 function makeHtml(originalString) {
     str.innerHTML = ''
     const span = document.createElement('span')
     span.textContent = `${originalString[0]}`;
-    span.style.borderLeft = "2px solid #FF8400";
+    span.style.borderLeft = "2px solid  #000080";
     span.classList.add(`span${0}`)
     str.insertAdjacentElement('beforeend', span)
     for (let i = 1; i < originalString.length; i++) {
@@ -18,6 +27,7 @@ function makeHtml(originalString) {
         str.insertAdjacentElement('beforeend', span)
     }
 }
+
 window.addEventListener('load', () => {
     input.focus();
 })
@@ -73,11 +83,20 @@ input.addEventListener('keydown', (e) => {
 
 //handling the input
 input.addEventListener('input', (e) => {
+    if (input.value.length > 0 && clockFlag == true && clock !=0) {
+        console.log('imin')
+        clockFlag = false;
+        watch.innerHTML = '';
+        stopWatch.classList.add('watch');
+        stopWatch.innerText = clock;
+        watch.append(stopWatch);
+        startTimer();
+    }
     let p = input.value;
     if (p.length < 1) {
         let index = document.querySelector(`p.given-text span.span${0}`);
         index.innerText = `${originalString[0]}`;
-        index.style.borderLeft = "2px solid #FF8400";
+        index.style.borderLeft = "2px solid  #000080";
         return;
     }
 
@@ -99,7 +118,8 @@ input.addEventListener('input', (e) => {
             if (p.length > 1) {
                 let beforeSpan = document.querySelector(`p.given-text span.span${p.length - 2}`);
                 // index.textContent = `${index.textContent}`;
-                index.style.borderRight = "2px solid #FF8400";
+                index.style.borderRight = "2px solid  #000080";
+                // index.style.animation = 'blink 1s linear infinite';
                 index.style.paddingRight = 0 + 'px';
                 // beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
                 beforeSpan.style.border = 'none';
@@ -114,7 +134,7 @@ input.addEventListener('input', (e) => {
                     index.style.borderLeft = 'none';
                     index.style.paddingRight = 2 + 'px';
                 }
-                index.style.borderRight = '2px solid #FF8400';
+                index.style.borderRight = '2px solid  #000080';
                 index.style.paddingRight = 0 + 'px';
             }
             index.classList.add('right');
@@ -141,7 +161,7 @@ input.addEventListener('input', (e) => {
                 index = document.querySelector(`p.given-text span.span${p.length - 1}`);
             }
             // index.textContent = `${index.textContent}|`
-            index.style.borderRight = '2px solid #FF8400';
+            index.style.borderRight = '2px solid  #000080';
             index.style.paddingRight = 0 + 'px';
             input.value += " ";
             index.classList.add('notTyped');
@@ -154,7 +174,7 @@ input.addEventListener('input', (e) => {
         if (p.length > 1) {
             let beforeSpan = document.querySelector(`p.given-text span.span${p.length - 2}`);
             // index.textContent = `${index.textContent}`;
-            index.style.borderRight = "2px solid #FF8400";
+            index.style.borderRight = "2px solid  #000080";
             index.style.paddingRight = 0 + 'px';
             // beforeSpan.textContent = `${beforeSpan.textContent[0]}`;
             beforeSpan.style.border = 'none';
@@ -167,7 +187,7 @@ input.addEventListener('input', (e) => {
                 index.style.borderLeft = 'none';
                 index.style.paddingRight = 2 + 'px';
             }
-            index.style.borderRight = "2px solid #FF8400";
+            index.style.borderRight = "2px solid  #000080";
             index.style.paddingRight = 0 + 'px';
         }
         index.classList.add('wrong');
@@ -181,3 +201,35 @@ input.addEventListener('input', (e) => {
         return;
     }
 })
+
+time.addEventListener('click', () => {
+    if (a % 2 == 0) {
+        time.style.color = '#ffd700';
+        clockFlag = true;
+    }
+    else {
+        time.style.color = 'white';
+        clockFlag = false;
+    }
+    a++;
+})
+
+timerSet.forEach(item => {
+    item.addEventListener('click', () => {
+        if (clockFlag) {
+            item.style.color = '#ffd700';
+            clock = (item.getAttribute('value'));
+        }
+    })
+});
+
+
+
+function startTimer() {
+    setTimeout(() => {
+        clock--;
+        console.log(clock);
+        stopWatch.innerText = clock;
+        if (clock != 0) startTimer();
+    }, 1000)
+}
