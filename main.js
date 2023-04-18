@@ -37,8 +37,6 @@ sKey.classList.add('hide');
 bubbles.classList.add('hide');
 
 window.addEventListener('scroll', () => {
-    console.log(window.scrollY)
-
     // nav buttons
     if (window.scrollY > 1400)
         buttons.classList.add('hide');
@@ -81,10 +79,10 @@ window.addEventListener('scroll', () => {
 })
 
 // to delay each card animation
-const cards = document.querySelectorAll('#about .card');
+// const cards = document.querySelectorAll('#about .card');
 
-cards.forEach((card) => {
-    const delay = Math.floor(Math.random() * 1000);
+// cards.forEach((card) => {
+//     const delay = Math.floor(Math.random() * 1000);
 
-    card.style.animationDelay = `${delay}ms`;
-});
+//     card.style.animationDelay = `${delay}ms`;
+// });

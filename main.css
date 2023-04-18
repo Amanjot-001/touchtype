@@ -84,6 +84,12 @@ body {
     font-size: 1.1rem;
 }
 
+.notes-btn:hover {
+    background: rgb(209, 209, 209);
+    border-radius: 20px;
+    color: black !important;
+}
+
 .login-btn {
     background: white;
     border-radius: 20px;
@@ -118,7 +124,7 @@ body {
     position: relative;
     font-family: 'Source Code Pro', monospace;
     width: max-content;
-    
+
 }
 
 /* typewriter effect*/
@@ -162,7 +168,7 @@ body {
 /* leaderboard */
 
 #leaderboard::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -211,85 +217,60 @@ body {
     background: linear-gradient(to bottom, rgba(8, 178, 255, 70), rgba(33, 29, 57, 30) 70%);
 }
 
-/* about */
-
-#about {
-    height: 80vh;
-    width: 100%;
-    padding-top: 8px;
+/* features */
+.heading {
+    background-color: #34159e;
+    text-align: center;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, .5);
+    
 }
 
-#about .card {
-    background-color: transparent;
-    border: none;
+.features {
+    background: linear-gradient(#0071b1, #02aabb);
 }
 
-#about .card-body {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-#about .card-title {
+.features h2 {
+    text-align: center;
     font-family: 'Roboto Slab', sans-serif;
-    font-weight: 500;
-    color: yellow;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* text-emphasis: bold !important; */
 }
 
-#about .card-text {
+.features p {
+    margin-left: 2rem;
+    margin-right: 1.5rem;
     font-family: 'Raleway', sans-serif;
-    color: white;
-    font-size: 1.2rem;
+    margin-top: 1.5rem;
 }
 
-/* cards shaking */
-.shaking-card {
-    position: relative;
-    transition: transform 0.5s ease-in-out;
-    animation: shake 3s ease-in-out infinite;
+.features .row {
+    height: 350px;
 }
 
-.shaking-card:hover {
-    cursor: default;
-    animation-play-state: paused;
+.img-1,
+.img-3 {
+    width: 100%;
+    border-radius: 20px;
 }
 
-@keyframes shake {
-    0% {
-        transform: rotate(0deg) translate(-1px, -1px);
-    }
-
-    25% {
-        transform: rotate(-1deg) translate(1px, -1px);
-    }
-
-    50% {
-        transform: rotate(1deg) translate(1px, 1px);
-    }
-
-    75% {
-        transform: rotate(-1deg) translate(-1px, 1px);
-    }
-
-    100% {
-        transform: rotate(0deg) translate(-1px, -1px);
-    }
+.img-2 {
+    width: 100%;
+    height: 95%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
-.img-1 {
-    position: relative;
-    border-radius: 2%;
-    width: 35%;
-    /* height: 400px; */
-    left: 50px;
+.book-img {
+    width: 100%;
+    height: 95%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 /* footer */
 
 #footer {
     padding-top: 10px;
+    background-color: #304146;
 }
 
 .profile-photo {
